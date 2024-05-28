@@ -7,11 +7,26 @@ sg.theme('DarkTeal6')
 clock = sg.Text('', key='clock')
 label = sg.Text('Type in a to-do')
 input_box = sg.InputText(tooltip='Enter todo', key='todo')
-add_button = sg.Button('Add', size=8)
+
+add_button = sg.Button(key='Add',
+                       image_source='add.png',
+                       image_size=(95,25),
+                       tooltip=' Add a new ToDo ',
+                       mouseover_colors='LightBlue2')
+
 list_box = sg.Listbox(values=func.get_todos(), key='todos',
                       enable_events=True, size=(45, 10))
-edit_button = sg.Button('Edit', size=8)
-complete_button = sg.Button('Complete', size=8)
+edit_button = sg.Button(key='Edit',
+                        image_source='edit.png',
+                        image_size=(95,25),
+                        tooltip=' Edit ToDo ',
+                        mouseover_colors='LightBlue2')
+
+complete_button = sg.Button(key='Complete',
+                            image_source='complete.png',
+                            image_size=(95,25),
+                            tooltip=' Complete ToDo ',
+                            mouseover_colors='LightBlue2')
 exit_button = sg.Button('Exit')
 
 left_column_content = [[clock],
@@ -19,13 +34,11 @@ left_column_content = [[clock],
                        [input_box],
                        [list_box],
                        [exit_button]]
-
 right_column_content = [[add_button],
                         [edit_button],
                         [complete_button]]
 left_column = sg.Column(left_column_content)
 right_column = sg.Column(right_column_content)
-
 
 window = sg.Window('My To-Do App',
                    layout=[[left_column, right_column]],
